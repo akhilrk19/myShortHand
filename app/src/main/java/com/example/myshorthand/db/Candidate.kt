@@ -14,6 +14,12 @@ data class Candidate(
     val name: String,
 
     @ColumnInfo(name = "candidate_grade")
-    val gradeClass: String
+    val gradeClass: String,
+
+    @ColumnInfo(name= "candidate_subject")
+    val subject: String,
+
+    @ColumnInfo(name = "rate_per_class")
+    val tution_fee: Float
 
 )
