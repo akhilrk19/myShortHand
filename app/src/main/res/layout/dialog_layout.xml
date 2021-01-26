@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#a8a8a8"
+        android:text="Fill out the details"
+        android:gravity="center"
+        android:layout_marginBottom="20dp"
+        android:textColor="@color/black"
+        />
+    <EditText
+        android:id="@+id/candidate_name"
+        android:hint="Candidate Name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:id="@+id/candidate_grade"
+        android:hint="Candidate Grade"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:id="@+id/candidate_subject"
+        android:hint="Candidate Subject"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:id="@+id/rate_per_class"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Rate per class"
+        android:inputType="number" />
+    <Button
+        android:id="@+id/register"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_gravity="center"
+        android:text="Submit"
+        android:textSize="18dp"
+        android:textColor="#fff"
+        android:textAllCaps="false"
+        android:background="#4885ed"
+        android:layout_marginBottom="25dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+</LinearLayout>

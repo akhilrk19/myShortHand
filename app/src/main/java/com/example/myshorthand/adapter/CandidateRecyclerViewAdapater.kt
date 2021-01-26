@@ -22,6 +22,7 @@ class CandidateRecyclerViewAdapater :
 
     override fun onBindViewHolder(holder: CandidateViewHolder, position: Int) {
         holder.bind(mCandidateList[position])
+
     }
 
     override fun getItemCount(): Int {
@@ -37,7 +38,11 @@ class CandidateRecyclerViewAdapater :
 class CandidateViewHolder(val candidateViewBinding: CandidateViewBindingImpl) :
     RecyclerView.ViewHolder(candidateViewBinding.root) {
     fun bind(candidate: Candidate) {
-        candidateViewBinding.candidateName.text = candidate.name
-        candidateViewBinding.candidateSubject.text = candidate.subject
+        candidateViewBinding.candidateName.text = "${candidate.name} (ID : ${candidate.id})"
+        candidateViewBinding.candidateSubject.text = "${candidate.gradeClass}, ${candidate.subject}"
+        candidateViewBinding.totalClasses.text = "Amount to be paid: Rs.${7 * 300}"
+        candidateViewBinding.addSession.setOnClickListener {
+        }
     }
+
 }

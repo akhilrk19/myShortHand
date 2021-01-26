@@ -6,6 +6,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardCornerRadius="10dp"
+        android:layout_margin="5dp"
         app:cardElevation="10dp">
 
         <LinearLayout
@@ -19,7 +20,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Candidate Name"
-                android:textSize="20dp"
+                android:textSize="14dp"
                 android:textStyle="bold" />
 
             <TextView
@@ -27,7 +28,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Candidate Subject"
-                android:textSize="20dp"
+                android:textSize="14dp"
                 android:textStyle="bold" />
 
             <LinearLayout
@@ -44,7 +45,7 @@
                     android:padding="5dp"
                     android:text="Add session"
                     android:textColor="#fff"
-                    android:textSize="16dp"
+                    android:textSize="14dp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -53,7 +54,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="25dp"
                     android:text="Total Classes : "
-                    android:textSize="20dp"
+                    android:textSize="14dp"
                     android:textStyle="bold" />
 
             </LinearLayout>
