@@ -12,4 +12,7 @@ class CandidateRepo (private val candidateDAO: CandidateDAO) {
     suspend fun delete(candidate: Candidate) {
         candidateDAO.deleteCandidate(candidate)
     }
+    suspend fun deleteAllCandidates() {
+        candidateDAO.deleteAllCandidates()
+    }
 }

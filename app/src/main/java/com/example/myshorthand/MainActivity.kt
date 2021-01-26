@@ -15,8 +15,10 @@ import com.example.myshorthand.db.CandidateRepo
 import com.example.myshorthand.db.CandidateTransactionRepo
 import com.example.myshorthand.view_model.CandidateViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -45,19 +47,19 @@ class MainActivity : AppCompatActivity() {
         candidateRecyclerviewAdapter = CandidateRecyclerViewAdapater()
         binding.recyclerView.adapter = candidateRecyclerviewAdapter
         GlobalScope.launch {
+            candidateRepository.deleteAllCandidates()
             candidateRepository.insert(Candidate(0,"Akhil","Btech","CS",300.0F))
             candidateRepository.insert(Candidate(0,"Akhil","Btech","CS",300.0F))
             candidateRepository.insert(Candidate(0,"Akhil","Btech","CS",300.0F))
             candidateRepository.insert(Candidate(0,"Akhil","Btech","CS",300.0F))
             candidateRepository.insert(Candidate(0,"Akhil","Btech","CS",300.0F))
-
         }
         displayCandidateList()
     }
 
     private fun displayCandidateList() {
          candidateViewModel.getCandidateList().observe(this, Observer {
-             Log.i("My Candidates: ",it.toString())
+             println("My Candidates: ${it}")
              candidateRecyclerviewAdapter.setCandidateList(it)
              candidateRecyclerviewAdapter.notifyDataSetChanged()
          })
