@@ -1,15 +1,14 @@
 package com.example.myshorthand.db
 
 class CandidateTransactionRepo (private val candidateTransactionDAO: CandidateTransactionDAO) {
-//    val candidates = candidateDAO.getAllCandidates()
 
     suspend fun insert(candidateTransaction: CandidateTransaction) {
-        candidateTransactionDAO.insertClassSession(candidateTransaction)
+        candidateTransactionDAO.insertNewTransaction(candidateTransaction)
     }
     suspend fun update(candidateTransaction: CandidateTransaction) {
-        candidateTransactionDAO.updateClassSession(candidateTransaction)
+        candidateTransactionDAO.updateTransaction(candidateTransaction)
     }
     suspend fun delete(candidateTransaction: CandidateTransaction) {
-        candidateTransactionDAO.deleteClassSession(candidateTransaction)
+        candidateTransactionDAO.deleteTransaction(candidateTransaction)
     }
 }

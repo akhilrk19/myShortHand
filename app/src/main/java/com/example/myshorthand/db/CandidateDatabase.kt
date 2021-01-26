@@ -8,6 +8,7 @@ import androidx.room.RoomDatabase
 abstract class CandidateDatabase: RoomDatabase() {
 
     abstract val candidateDAO: CandidateDAO
+    abstract val candidateTransactionDAO: CandidateTransactionDAO
     companion object {
         @Volatile
         private var INSTANCE: CandidateDatabase? = null

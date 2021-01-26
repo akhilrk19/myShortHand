@@ -4,12 +4,12 @@ import androidx.lifecycle.LiveData
 import androidx.room.*
 
 interface CandidateTransactionDAO {
-    @Insert
-    suspend fun insertClassSession(candidateTransaction: CandidateTransaction): Long
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertNewTransaction(candidateTransaction: CandidateTransaction): Long
 
     @Update
-    suspend fun updateClassSession(candidateTransaction: CandidateTransaction)
+    suspend fun updateTransaction(candidateTransaction: CandidateTransaction)
 
     @Delete
-    suspend fun deleteClassSession(candidateTransaction: CandidateTransaction)
+    suspend fun deleteTransaction(candidateTransaction: CandidateTransaction)
 }
