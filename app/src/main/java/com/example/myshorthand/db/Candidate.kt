@@ -20,6 +20,9 @@ data class Candidate(
     val subject: String,
 
     @ColumnInfo(name = "rate_per_class")
-    val tution_fee: Float
+    val tution_fee: Float,
+
+    @ColumnInfo(name = "registration_date")
+    val registration_date: String
 
 )

@@ -1,7 +1,6 @@
 package com.example.myshorthand
 
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -15,10 +14,10 @@ import com.example.myshorthand.db.CandidateRepo
 import com.example.myshorthand.db.CandidateTransactionRepo
 import com.example.myshorthand.view_model.CandidateViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import java.time.Instant
+import java.time.format.DateTimeFormatter
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -48,11 +47,22 @@ class MainActivity : AppCompatActivity() {
         binding.recyclerView.adapter = candidateRecyclerviewAdapter
         GlobalScope.launch {
             candidateRepository.deleteAllCandidates()
-            candidateRepository.insert(Candidate(0,"Akhil","Btech","CS",300.0F))
-            candidateRepository.insert(Candidate(0,"Akhil","Btech","CS",300.0F))
-            candidateRepository.insert(Candidate(0,"Akhil","Btech","CS",300.0F))
-            candidateRepository.insert(Candidate(0,"Akhil","Btech","CS",300.0F))
-            candidateRepository.insert(Candidate(0,"Akhil","Btech","CS",300.0F))
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                candidateRepository.insert(Candidate(0,"Akhil","Btech","CS",300.0F,
+                    DateTimeFormatter.ISO_INSTANT.format(Instant.now())))
+                candidateRepository.insert(Candidate(0,"Akhil","Btech","CS",300.0F,
+                    DateTimeFormatter.ISO_INSTANT.format(Instant.now())))
+                candidateRepository.insert(Candidate(0,"Akhil","Btech","CS",300.0F,
+                    DateTimeFormatter.ISO_INSTANT.format(Instant.now())))
+                candidateRepository.insert(Candidate(0,"Akhil","Btech","CS",300.0F,
+                    DateTimeFormatter.ISO_INSTANT.format(Instant.now())))
+                candidateRepository.insert(Candidate(0,"Akhil","Btech","CS",300.0F,
+                    DateTimeFormatter.ISO_INSTANT.format(Instant.now())))
+                candidateRepository.insert(Candidate(0,"Akhil","Btech","CS",300.0F,
+                    DateTimeFormatter.ISO_INSTANT.format(Instant.now())))
+                candidateRepository.insert(Candidate(0,"Akhil","Btech","CS",300.0F,
+                    DateTimeFormatter.ISO_INSTANT.format(Instant.now())))
+            }
         }
         displayCandidateList()
     }
