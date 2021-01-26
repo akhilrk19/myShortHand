@@ -1,15 +1,15 @@
 package com.example.myshorthand.db
 
-import android.content.Context
 import androidx.room.Database
-import androidx.room.Room
 import androidx.room.RoomDatabase
-@Database(entities = [Candidate::class], version = 1)
+
+
+@Database(entities = [Candidate::class, CandidateTransaction::class], version = 1, exportSchema = false)
 abstract class CandidateDatabase: RoomDatabase() {
 
     abstract val candidateDAO: CandidateDAO
     abstract val candidateTransactionDAO: CandidateTransactionDAO
-    companion object {
+    /*companion object {
         @Volatile
         private var INSTANCE: CandidateDatabase? = null
         fun getInstance(context: Context): CandidateDatabase {
@@ -22,5 +22,5 @@ abstract class CandidateDatabase: RoomDatabase() {
                 return instance
             }
         }
-    }
+    }*/
 }

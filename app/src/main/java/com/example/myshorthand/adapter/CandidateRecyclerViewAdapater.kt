@@ -25,7 +25,7 @@ class CandidateRecyclerViewAdapater :
     }
 
     override fun getItemCount(): Int {
-        return mCandidateList?.size
+        return mCandidateList.size
     }
 
     fun setCandidateList(candidateList: List<Candidate>) {
