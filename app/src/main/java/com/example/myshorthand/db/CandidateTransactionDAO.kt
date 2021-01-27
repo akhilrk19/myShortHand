@@ -4,12 +4,9 @@ import androidx.room.*
 
 @Dao
 interface CandidateTransactionDAO {
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert
     suspend fun insertNewTransaction(candidateTransaction: CandidateTransaction): Long
 
-    @Update
-    suspend fun updateTransaction(candidateTransaction: CandidateTransaction)
-
-    @Delete
-    suspend fun deleteTransaction(candidateTransaction: CandidateTransaction)
+    @Query("select SUM(class_count) from candidate_transaction where transaction_date= :tDate")
+    suspend fun getTransactionCount(tDate: String): Int
 }

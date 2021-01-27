@@ -1,7 +1,6 @@
 package com.example.myshorthand.db
 
 class CandidateRepo (private val candidateDAO: CandidateDAO) {
-  val candidates = candidateDAO.getAllCandidates()
 
     suspend fun insert(candidate: Candidate) {
         candidateDAO.insertCandidate(candidate)

@@ -11,7 +11,7 @@ data class CandidateTransaction(
     val transaction_id: Int,
     @ColumnInfo(name = "candidate_id")
     val candidate_id: Int,
-    @ColumnInfo(name = "month")
+    @ColumnInfo(name = "transaction_date")
     val month: String,
     @ColumnInfo(name = "class_count")
     val classCount: Int
