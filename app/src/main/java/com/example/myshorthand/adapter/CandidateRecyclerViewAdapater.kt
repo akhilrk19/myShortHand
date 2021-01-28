@@ -7,26 +7,19 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.myshorthand.R
 import com.example.myshorthand.databinding.CandidateViewBindingImpl
 import com.example.myshorthand.db.Candidate
-import com.example.myshorthand.db.CandidateDatabase
 import com.example.myshorthand.db.CandidateTransaction
-import com.example.myshorthand.db.CandidateTransactionDAO
-import com.example.myshorthand.view_model.CandidateViewModel
+import com.example.myshorthand.db.JoinedDatabase
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
-import java.time.Instant
-import java.time.format.DateTimeFormatter
 import java.util.*
-import javax.inject.Inject
 import kotlin.collections.ArrayList
 
-val sdf = SimpleDateFormat("dd/M/yyyy")
-val currentDate = sdf.format(Date())
+
 
 class CandidateRecyclerViewAdapater :
     RecyclerView.Adapter<CandidateViewHolder>() {
-
-    var mCandidateList = ArrayList<Candidate>()
+    var mCandidateList = ArrayList<JoinedDatabase>()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CandidateViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         val binding: CandidateViewBindingImpl =
@@ -38,31 +31,26 @@ class CandidateRecyclerViewAdapater :
         val candidate = mCandidateList[position]
         holder.bind(candidate)
         holder.candidateViewBinding.addSession.setOnClickListener {
-            GlobalScope.launch {
+           /* GlobalScope.launch {
                     candidateDatabase.candidateTransactionDAO.insertNewTransaction(
                         CandidateTransaction(
                             0, candidate.id,
                             currentDate, 1
                         )
                     )
-            }
+            }*/
         }
         var totalAmount: Float? = 0F
         var classCount: Int? = 0
-        GlobalScope.launch {
-            classCount = candidateDatabase.candidateTransactionDAO.getTransactionCount(
-                currentDate
-            )
-            totalAmount = classCount!! * candidate.tution_fee
-        }
-        holder.candidateViewBinding.totalClasses.text = "Amount to be paid: ${classCount} Classes, Rs.${totalAmount}"
+
+//        holder.candidateViewBinding.totalClasses.text = "Amount to be paid: ${classCount} Classes, Rs.${totalAmount}"
     }
 
     override fun getItemCount(): Int {
         return mCandidateList.size
     }
 
-    fun setCandidateList(candidateList: List<Candidate>) {
+    fun setCandidateList(candidateList: List<JoinedDatabase>) {
         this.mCandidateList.clear()
         this.mCandidateList.addAll(candidateList)
     }
@@ -71,7 +59,7 @@ class CandidateRecyclerViewAdapater :
 class CandidateViewHolder(val candidateViewBinding: CandidateViewBindingImpl) :
     RecyclerView.ViewHolder(candidateViewBinding.root) {
 
-    fun bind(candidate: Candidate) {
+    fun bind(candidate: JoinedDatabase) {
         candidateViewBinding.candidateName.text = "${candidate.name} (ID : ${candidate.id})"
         candidateViewBinding.candidateSubject.text = "${candidate.gradeClass}, ${candidate.subject}"
     }

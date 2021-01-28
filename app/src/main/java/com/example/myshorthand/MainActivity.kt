@@ -14,10 +14,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myshorthand.adapter.CandidateRecyclerViewAdapater
 import com.example.myshorthand.databinding.ActivityMainBindingImpl
-import com.example.myshorthand.db.Candidate
-import com.example.myshorthand.db.CandidateDatabase
-import com.example.myshorthand.db.CandidateRepo
-import com.example.myshorthand.db.CandidateTransactionRepo
+import com.example.myshorthand.db.*
 import com.example.myshorthand.view_model.CandidateViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.GlobalScope
@@ -94,8 +91,10 @@ class MainActivity : AppCompatActivity() {
     private fun displayCandidateList() {
         candidateViewModel.getCandidateList().observe(this, Observer {
             println("My Candidates: ${it}")
-            candidateRecyclerviewAdapter.setCandidateList(it)
-            candidateRecyclerviewAdapter.notifyDataSetChanged()
+            it?.run {
+                candidateRecyclerviewAdapter.setCandidateList(it)
+                candidateRecyclerviewAdapter.notifyDataSetChanged()
+            }
         })
     }
 
