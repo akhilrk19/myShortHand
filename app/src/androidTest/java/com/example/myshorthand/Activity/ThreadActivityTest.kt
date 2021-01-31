@@ -11,9 +11,9 @@ import org.junit.Test
 import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4ClassRunner::class)
-class SecondActivityTest {
+class ThreadActivityTest {
     @get: Rule
-    val activityRule = ActivityScenarioRule(SecondActivity::class.java)
+    val activityRule = ActivityScenarioRule(ThreadActivity::class.java)
 
     @Test
     fun titleIsInView() {

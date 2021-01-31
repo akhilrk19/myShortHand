@@ -60,7 +60,6 @@ class MainActivity : AppCompatActivity() {
     private fun addCandidateButtonListener() {
         binding.addCandidate.setOnClickListener {
             addACandidate()
-
         }
 
     }
