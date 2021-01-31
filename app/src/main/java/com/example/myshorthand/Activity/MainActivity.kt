@@ -1,5 +1,6 @@
-package com.example.myshorthand
+package com.example.myshorthand.Activity
 
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.view.View
@@ -12,11 +13,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.myshorthand.R
 import com.example.myshorthand.adapter.CandidateRecyclerViewAdapater
 import com.example.myshorthand.databinding.ActivityMainBindingImpl
 import com.example.myshorthand.db.*
 import com.example.myshorthand.view_model.CandidateViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import java.time.Instant
@@ -57,7 +60,9 @@ class MainActivity : AppCompatActivity() {
     private fun addCandidateButtonListener() {
         binding.addCandidate.setOnClickListener {
             addACandidate()
+
         }
+
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -73,15 +78,10 @@ class MainActivity : AppCompatActivity() {
         val alert = dialogBox.create()
 
         register.setOnClickListener {
-            GlobalScope.launch {
-                candidateRepository.insert(
-                    Candidate(
-                        0,
-                        name.text.trim().toString(), grade.text.trim().toString(),
-                        subject.text.trim().toString(), rate.text.trim().toString().toFloat(),
-                        DateTimeFormatter.ISO_INSTANT.format(Instant.now()))
-                )
-            }
+            candidateViewModel.insertCandidate(
+                name.text.toString(), grade.text.toString(),
+                subject.text.toString(), rate.text.toString()
+            )
             alert.cancel()
         }
         alert.show()

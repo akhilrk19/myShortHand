@@ -19,7 +19,7 @@ import kotlin.collections.ArrayList
 
 class CandidateRecyclerViewAdapater :
     RecyclerView.Adapter<CandidateViewHolder>() {
-    var mCandidateList = ArrayList<JoinedDatabase>()
+    var mCandidateList = ArrayList<Candidate>()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CandidateViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         val binding: CandidateViewBindingImpl =
@@ -50,7 +50,7 @@ class CandidateRecyclerViewAdapater :
         return mCandidateList.size
     }
 
-    fun setCandidateList(candidateList: List<JoinedDatabase>) {
+    fun setCandidateList(candidateList: List<Candidate>) {
         this.mCandidateList.clear()
         this.mCandidateList.addAll(candidateList)
     }
@@ -59,7 +59,7 @@ class CandidateRecyclerViewAdapater :
 class CandidateViewHolder(val candidateViewBinding: CandidateViewBindingImpl) :
     RecyclerView.ViewHolder(candidateViewBinding.root) {
 
-    fun bind(candidate: JoinedDatabase) {
+    fun bind(candidate: Candidate) {
         candidateViewBinding.candidateName.text = "${candidate.name} (ID : ${candidate.id})"
         candidateViewBinding.candidateSubject.text = "${candidate.gradeClass}, ${candidate.subject}"
     }

@@ -8,7 +8,11 @@ import androidx.lifecycle.ViewModel
 import com.example.myshorthand.db.Candidate
 import com.example.myshorthand.db.CandidateDatabase
 import com.example.myshorthand.db.JoinedDatabase
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
+import java.time.Instant
+import java.time.format.DateTimeFormatter
 import java.util.*
 
 val sdf = SimpleDateFormat("dd/M/yyyy")
@@ -22,8 +26,21 @@ class CandidateViewModel @ViewModelInject constructor(
     var inputCandidateSubject = MutableLiveData<String>()
     var inputCandidateRatePerClass = MutableLiveData<Int>()
 
-    fun getCandidateList(): LiveData<List<JoinedDatabase>> {
-        return candidateDatabase.candidateDAO.getAllCandidates(currentDate)
+    fun getCandidateList(): LiveData<List<Candidate>> {
+        return candidateDatabase.candidateDAO.getAllCandidates()
+    }
+
+    fun insertCandidate(name: String, grade: String,
+    subject: String, rate: String) {
+        GlobalScope.launch {
+            candidateDatabase.candidateDAO.insertCandidate(
+                    Candidate(
+                            0,
+                            name.trim(), grade.trim(),
+                            subject.trim(), rate.trim().toFloat(),
+                            currentDate)
+            )
+        }
     }
 
     override fun addOnPropertyChangedCallback(callback: Observable.OnPropertyChangedCallback?) {

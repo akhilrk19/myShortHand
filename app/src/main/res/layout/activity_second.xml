@@ -2,7 +2,6 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-
     <data>
 
         <variable
@@ -13,12 +12,11 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:id="@+id/main_parent"
-        tools:context=".Activity.MainActivity">
+        android:id="@+id/second_parent"
+        tools:context=".Activity.SecondActivity">
 
         <TextView
-            android:id="@+id/title_shorthand"
+            android:id="@+id/title_shorthand_second"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             app:layout_constraintStart_toStartOf="parent"
@@ -29,32 +27,16 @@
             android:text="MyShortHand"
             android:textSize="25dp" />
 
-        <Button
-            android:id="@+id/add_candidate"
-            app:layout_constraintTop_toBottomOf="@+id/title_shorthand"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_constraintWidth_percent="0.55"
-            app:layout_constraintHeight_percent="0.06"
-            android:layout_gravity="center"
-            android:layout_marginTop="15dp"
-            android:background="#fcd175"
-            android:gravity="center"
-            android:text="Add Candidate"
-            android:textAllCaps="false"
-            android:textSize="14dp"
-            android:textStyle="bold" />
 
         <androidx.recyclerview.widget.RecyclerView
-            app:layout_constraintTop_toBottomOf="@id/add_candidate"
+            app:layout_constraintTop_toBottomOf="@id/title_shorthand_second"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:id="@+id/recyclerView"
+            android:id="@+id/recyclerView_second"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginTop="20dp" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
