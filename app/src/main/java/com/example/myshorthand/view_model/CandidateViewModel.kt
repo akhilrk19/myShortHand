@@ -7,12 +7,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.myshorthand.db.Candidate
 import com.example.myshorthand.db.CandidateDatabase
-import com.example.myshorthand.db.JoinedDatabase
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
-import java.time.Instant
-import java.time.format.DateTimeFormatter
 import java.util.*
 
 val sdf = SimpleDateFormat("dd/M/yyyy")

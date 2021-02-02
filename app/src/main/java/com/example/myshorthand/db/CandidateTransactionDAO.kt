@@ -9,6 +9,6 @@ interface CandidateTransactionDAO {
     @Insert
     suspend fun insertNewTransaction(candidateTransaction: CandidateTransaction): Long
 
-    @Query("select SUM(class_count) from candidate_transaction where transaction_date= :tDate")
-    suspend fun getTransactionCount(tDate: String): Int
+    @Query("select SUM(class_count) from candidate_transaction where transaction_date= :tDate and candidate_id= :cId")
+    suspend fun getTransactionCount(tDate: String, cId: Int): List<Int>
 }

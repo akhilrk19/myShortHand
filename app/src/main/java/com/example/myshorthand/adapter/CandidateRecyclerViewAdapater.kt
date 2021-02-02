@@ -7,11 +7,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.myshorthand.R
 import com.example.myshorthand.databinding.CandidateViewBindingImpl
 import com.example.myshorthand.db.Candidate
-import com.example.myshorthand.db.CandidateTransaction
-import com.example.myshorthand.db.JoinedDatabase
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
 
